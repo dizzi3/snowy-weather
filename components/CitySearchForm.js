@@ -22,7 +22,7 @@ const CitySearchForm = (props) => {
     return(
 
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
-            <FormControl isInvalid={errors.city}>
+            <FormControl id='city' isInvalid={errors.city}>
                 <FormLabel>City</FormLabel>
                 <Input {...register('city', {
                     required: 'City is required'
@@ -35,7 +35,14 @@ const CitySearchForm = (props) => {
             </FormControl>
 
             <Button type='submit' mt='1em' size='sm'>Submit</Button>
+
+            <FormControl id='errors' isInvalid={props.displayErrorMessage}>
+                <FormErrorMessage>
+                    {props.errorMessage}
+                </FormErrorMessage>
+            </FormControl>
         </form>
+
 
     )
 

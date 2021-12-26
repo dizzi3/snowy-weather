@@ -1,7 +1,7 @@
 import { Container, Text } from '@chakra-ui/react'
 
 function CityDataDisplay(props){
-console.log(props);
+
     return(
 
         <Container maxW='100%' display={props.display === true ? 'block' : 'none'}>
