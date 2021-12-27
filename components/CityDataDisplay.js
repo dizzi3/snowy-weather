@@ -2,8 +2,6 @@ import { Container, Text } from '@chakra-ui/react'
 
 function CityDataDisplay(props){
 
-    console.log(props.data);
-
     return(
 
         <Container maxW='100%' display={props.display === true ? 'block' : 'none'}>
@@ -18,8 +16,6 @@ function CityDataDisplay(props){
                     <Text>Humidity: {props.data.main.humidity}%</Text>
                     <Text>Wind speed: {props.data.wind.speed}m/h</Text>
                     <Text>Cloudiness: {props.data.clouds.all}%</Text>
-
-                    
 
                 </Container>
         

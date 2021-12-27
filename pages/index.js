@@ -1,6 +1,6 @@
 import { Container, Center } from '@chakra-ui/react'
 import CitySearchForm from "../components/CitySearchForm";
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import CityDataDisplay from '../components/CityDataDisplay';
 import FindMatchingCities from '../components/Search/FindMatchingCities';
 import ChooseCity from '../components/Choose/ChooseCity';
@@ -8,6 +8,19 @@ import SearchForCity from '../components/Search/SearchForCity';
 import dynamic from 'next/dynamic';
 
 export default function Home() {
+
+  useEffect(() => {
+    initializeCityBasedOnGeolocation();
+  }, [])
+
+  function initializeCityBasedOnGeolocation(){
+    if("geolocation" in navigator){
+      navigator.geolocation.getCurrentPosition((position) => {
+        setMapPosition([position.coords.latitude, position.coords.longitude]);
+        SearchForCity({city: {lon: position.coords.longitude, lat: position.coords.latitude}, handleData: setCity})
+      });
+    }
+  }
 
   const RenderedMap = dynamic(() => import('./../components/Map/Map'), {
     ssr: false,
