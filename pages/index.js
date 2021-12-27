@@ -1,12 +1,20 @@
-import { Container } from '@chakra-ui/react'
+import { Container, Center } from '@chakra-ui/react'
 import CitySearchForm from "../components/CitySearchForm";
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import CityDataDisplay from '../components/CityDataDisplay';
 import FindMatchingCities from '../components/Search/FindMatchingCities';
 import ChooseCity from '../components/Choose/ChooseCity';
 import SearchForCity from '../components/Search/SearchForCity';
+import dynamic from 'next/dynamic';
 
 export default function Home() {
+
+  const RenderedMap = dynamic(() => import('./../components/Map/Map'), {
+    ssr: false,
+    loading: () => <p>Map is loading..</p>
+  } )
+
+  const MapRef = useRef(null)
 
   const [displayCityData, setDisplayCityData] = useState(false)
   const [cityData, setCityData] = useState({})
@@ -15,6 +23,9 @@ export default function Home() {
   const [errorMessage, setErrorMessage] = useState('')
 
   const [matchingCities, setMatchingCities] = useState(null)
+
+  const [displayMap, setDisplayMap] = useState(true)
+  const [mapPosition, setMapPosition] = useState([50.87033, 20.62752])
 
   function clearStates(){
     setDisplayErrorMessage(false);
@@ -52,16 +63,28 @@ export default function Home() {
     setDisplayErrorMessage(true);
   }
 
+  function viewOnMap(position){
+    setMapPosition(position);
+    setDisplayMap(true);
+    MapRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start'})
+  }
+
   return (
-    <Container maxW='80%' p='3em'>
-      <Container maxW='35%'>
+    <Container maxW='100%' maxH='100%' pb='6em' pt='2em'>
+      <Container maxW='100%' w='20%'>
         <CitySearchForm onCityFormSubmit={onCityFormSubmit} displayErrorMessage={displayErrorMessage}
                         errorMessage={errorMessage}/>
       </Container>
 
-      <ChooseCity cities={matchingCities} setCity={setCity}/>
+      <Center textAlign='center' maxW='100%' mt='2em'>
+        <ChooseCity cities={matchingCities} setCity={setCity} viewOnMap={viewOnMap}/>
+        <CityDataDisplay display={displayCityData} data={cityData}/>
+      </Center>
       
-      <CityDataDisplay display={displayCityData} data={cityData}/>
+      <Container maxW='100%' w='100%' mt='3em'>
+        <RenderedMap position={mapPosition} display={displayMap}/>
+        <div ref={MapRef} />
+      </Container>
 
     </Container>
   )

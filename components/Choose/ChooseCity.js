@@ -1,5 +1,6 @@
 import React from "react";
 import City from "./City";
+import { Container, VStack } from '@chakra-ui/react'
 
 function ChooseCity(props){
 
@@ -8,12 +9,13 @@ function ChooseCity(props){
 
     return (
 
-        <>
-            {props.cities.map((city) => (
-                React.createElement(City, {key: props.cities.indexOf(city), city: city, setCity: props.setCity})
-            ))}
-            
-        </>
+        <Container maxW='100%'>
+            <VStack>
+                {props.cities.map((city) => (
+                    React.createElement(City, {key: props.cities.indexOf(city), city: city, setCity: props.setCity, viewOnMap: props.viewOnMap})
+                ))}
+            </VStack>
+        </Container>
 
     )
 

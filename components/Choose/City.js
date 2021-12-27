@@ -13,18 +13,19 @@ function City(props){
     }
 
     return (
-        <Box p='1em' m='1em' borderTop='1px solid #f4f4f4'>
+        <Box p='1em' m='1em' borderTop='1px solid #f4f4f4' maxW='100%' w='40%' mt='3em'>
 
             <HStack>
-                <Container>
+                <Container maxW='100%'>
                     <Container>{props.city.name}, {props.city.countryCode}{props.city.stateCode !== '' ? ' [' + props.city.stateCode + ']': '' }</Container>
                     <Container>{complementaryData !== null ? 
                         <Box>{complementaryData.main.temp}&deg;C {complementaryData.weather[0].description}</Box>
                     : <></>}</Container>
-                    <Container>Geo coords [{ props.city.longitude }, { props.city.latitude }]</Container>
+                    <Container>Geo coords [{ props.city.longitude * 1}, { props.city.latitude * 1 }]</Container>
                 </Container>
 
-                <Button colorScheme='blue' size='sm' onClick={() => { props.setCity(complementaryData) }}>Choose</Button>
+                <Button colorScheme='blue' size='sm' p={5} onClick={() => { props.viewOnMap([props.city.latitude, props.city.longitude]) }}>View on map</Button>
+                <Button colorScheme='blue' size='sm' p={5} onClick={() => { props.setCity(complementaryData) }}>Choose</Button>
 
             </HStack>
         </Box>
