@@ -1,4 +1,4 @@
-import { Container, Text } from '@chakra-ui/react'
+import { Container, Text, Box } from '@chakra-ui/react'
 
 function CityDataDisplay(props){
 
