@@ -38,7 +38,7 @@ export default function Home() {
   const [matchingCities, setMatchingCities] = useState(null)
 
   const [displayMap, setDisplayMap] = useState(true)
-  const [mapPosition, setMapPosition] = useState([50.87033, 20.62752])
+  const [mapPosition, setMapPosition] = useState([34.05223, -118.24368])
 
   function clearStates(){
     setDisplayErrorMessage(false);
@@ -66,9 +66,11 @@ export default function Home() {
   }
 
   function setCity(data){
+    console.log(data);
     setCityData(data);
     setDisplayCityData(true);
     setMatchingCities(null);
+    setMapPosition([data.coord.lat, data.coord.lon]);
   }
 
   function onError(message){
