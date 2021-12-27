@@ -33,7 +33,7 @@ export default function Home() {
     if(cities.length > 0){
 
       if(cities.length === 1){
-        SearchForCity({city: {id: cities[0].id}, handleData: setCity})
+        SearchForCity({city: {lon: cities[0].longitude, lat: cities[0].latitude}, handleData: setCity})
       }else 
         setMatchingCities(cities);
     }

@@ -10,7 +10,7 @@ function ChooseCity(props){
 
         <>
             {props.cities.map((city) => (
-                React.createElement(City, {key: city.id, city: city, setCity: props.setCity})
+                React.createElement(City, {key: props.cities.indexOf(city), city: city, setCity: props.setCity})
             ))}
             
         </>

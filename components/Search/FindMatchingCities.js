@@ -1,8 +1,8 @@
-import citiesList from './../../res/city.list.json'
+import { City } from 'country-state-city';
 
 function FindMatchingCities(city){
 
-    return citiesList.filter(c => c.name === city)
+    return City.getAllCities().filter(c => c.name === city)
 
 }
 

@@ -6,7 +6,7 @@ function City(props){
 
     const [complementaryData, setComplementaryData] = useState(null)
 
-    useEffect(() => SearchForCity({city: {id: props.city.id}, handleData: handleSearchRequest}), []);
+    useEffect(() => SearchForCity({city: {lat: props.city.latitude, lon: props.city.longitude}, handleData: handleSearchRequest}), []);
 
     function handleSearchRequest(data){
         setComplementaryData(data)
@@ -17,11 +17,11 @@ function City(props){
 
             <HStack>
                 <Container>
-                    <Container>{props.city.name}, {props.city.country}{props.city.state !== '' ? ' [' + props.city.state + ']': '' }</Container>
+                    <Container>{props.city.name}, {props.city.countryCode}{props.city.stateCode !== '' ? ' [' + props.city.stateCode + ']': '' }</Container>
                     <Container>{complementaryData !== null ? 
                         <Box>{complementaryData.main.temp}&deg;C {complementaryData.weather[0].description}</Box>
                     : <></>}</Container>
-                    <Container>Geo coords [{ props.city.coord.lon }, { props.city.coord.lat }]</Container>
+                    <Container>Geo coords [{ props.city.longitude }, { props.city.latitude }]</Container>
                 </Container>
 
                 <Button colorScheme='blue' size='sm' onClick={() => { props.setCity(complementaryData) }}>Choose</Button>
