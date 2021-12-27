@@ -1,6 +1,6 @@
 import { Box, Container, HStack, Button } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
-import SearchForCity from './SearchForCity'
+import SearchForCity from '../Search/SearchForCity'
 
 function City(props){
 
@@ -24,7 +24,7 @@ function City(props){
                     <Container>Geo coords [{ props.city.coord.lon }, { props.city.coord.lat }]</Container>
                 </Container>
 
-                <Button colorScheme='blue' size='sm' onClick={() => { props.setCity(props.city) }}>Choose</Button>
+                <Button colorScheme='blue' size='sm' onClick={() => { props.setCity(complementaryData) }}>Choose</Button>
 
             </HStack>
         </Box>

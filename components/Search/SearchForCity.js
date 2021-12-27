@@ -9,10 +9,6 @@ function readRequestData(props, data){
     
     if(data.cod === 200)
         props.handleData(data);
-    else if(data.cod === '404')
-        props.onError('City with this name was not found.');
-    else
-        props.onError('Error occured while fetching city request.');
 
 }
 
