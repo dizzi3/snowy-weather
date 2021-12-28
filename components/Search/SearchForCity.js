@@ -1,6 +1,6 @@
 function makeOpenWeatherRequest(props){
 
-    const request = 'https://api.openweathermap.org/data/2.5/weather?lat=' + props.city.lat + '&lon=' + props.city.lon + '&units=metric&appid=' + process.env.OPEN_WEATHER_API_KEY
+    const request = 'https://api.openweathermap.org/data/2.5/weather?lat=' + props.city.lat + '&lon=' + props.city.lon + '&units=metric&appid=' + process.env.NEXT_PUBLIC_OPEN_WEATHER_API_KEY
 
     fetch(request).then(response => response.json()).then(data => readRequestData(props, data));
 }
