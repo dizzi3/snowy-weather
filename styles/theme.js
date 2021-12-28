@@ -1,5 +1,11 @@
 import { extendTheme } from "@chakra-ui/react";
 import { mode } from '@chakra-ui/theme-tools'
+import { createBreakpoints } from '@chakra-ui/theme-tools'
+
+const breakpoints = createBreakpoints({
+    sm: '0px',
+    md: '1250px',
+})
 
 const config = {
     initialColorMode: 'dark',
@@ -19,7 +25,7 @@ const styles = {
 }
 
 const theme = extendTheme({
-    config, styles
+    breakpoints, config, styles
 })
 
 export default theme

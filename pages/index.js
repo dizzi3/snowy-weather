@@ -85,7 +85,7 @@ export default function Home() {
 
   return (
     <Container maxW='100%' maxH='100%' pb='6em' pt='2em'>
-      <Container maxW='100%' w='15%'>
+      <Container maxW='100%' w={{sm: '70%', md: '15%'}}>
         <CitySearchForm onCityFormSubmit={onCityFormSubmit} displayErrorMessage={displayErrorMessage}
                         errorMessage={errorMessage}/>
       </Container>
@@ -95,10 +95,10 @@ export default function Home() {
         <CityDataDisplay display={displayCityData} data={cityData}/>
       </Center>
       
-      <Container maxW='100%' w='100%' mt='3em' textAlign='center'>
-        <RenderedMap position={mapPosition} display={displayMap}/>
-        <div ref={MapRef} />
-      </Container>
+      <Center maxW='100%' w='100%' mt='3em'>
+          <RenderedMap position={mapPosition} display={displayMap}/>
+          <div ref={MapRef} />
+      </Center>
 
     </Container>
   )
