@@ -29,7 +29,7 @@ function City(props){
                 </Container>
 
                 <Button colorScheme='blue' size='sm' fontWeight='400' fontSize='1em' px={10} py={6} onClick={viewOnMap}>View on map</Button>
-                <Button colorScheme='blue' size='sm' fontWeight='400' fontSize='1em' px={10} py={6} onClick={() => { props.setCity(JSON.parse(JSON.stringify(complementaryData))) }}>Choose</Button>
+                <Button colorScheme='blue' size='sm' fontWeight='400' fontSize='1em' px={10} py={6} onClick={() => { props.setCity(complementaryData) }}>Choose</Button>
 
             </HStack>
         </Box>
