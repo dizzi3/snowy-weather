@@ -1,9 +1,10 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import './../components/Map/leaflet.css'
+import theme from '../styles/theme'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Component {...pageProps} />
     </ChakraProvider>
   )

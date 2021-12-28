@@ -66,7 +66,6 @@ export default function Home() {
   }
 
   function setCity(data){
-    console.log(data);
     setCityData(data);
     setDisplayCityData(true);
     setMatchingCities(null);
