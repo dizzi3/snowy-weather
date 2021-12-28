@@ -1,4 +1,4 @@
-import { Box, Container, HStack, Button, Link } from '@chakra-ui/react'
+import { Box, Container, HStack, Button, Link, Flex, Spacer } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import SearchForCity from '../Search/SearchForCity'
 
@@ -17,19 +17,27 @@ function City(props){
     }
 
     return (
-        <Box p='1em' m='1em' borderTop='1px solid #f4f4f4' maxW='100%' w='40%' mt='3em' fontFamily='Roboto'>
-
+        <Box borderTop='1px solid #f4f4f4' maxW='100%' w={{sm: '100%', md: '40%'}} mt='3em' fontFamily='Roboto' pt={3} pb={3}>
+            
             <HStack>
-                <Container maxW='100%'>
+                <Container maxW='100%' w='100%'>
                     <Container>{props.city.name}, {props.city.countryCode}{props.city.stateCode !== '' ? ' [' + props.city.stateCode + ']': '' }</Container>
                     <Container>{complementaryData !== null ? 
-                        <Box>{complementaryData.main.temp}&deg;C {complementaryData.weather[0].description}</Box>
+                        <Box>{complementaryData.main.temp}&deg;C</Box>
                     : <></>}</Container>
+
+                    <Container>{complementaryData !== null ? 
+                        <Box>{complementaryData.weather[0].description}</Box>
+                    : <></>}</Container>
+
                     <Container><Link onClick={viewOnMap}>Geo coords [{ props.city.longitude * 1}, { props.city.latitude * 1 }]</Link></Container>
                 </Container>
 
-                <Button colorScheme='blue' size='sm' fontWeight='400' fontSize='1em' px={10} py={6} onClick={viewOnMap}>View on map</Button>
-                <Button colorScheme='blue' size='sm' fontWeight='400' fontSize='1em' px={10} py={6} onClick={() => { props.setCity(complementaryData) }}>Choose</Button>
+                <Flex direction={{sm: 'column', md: 'row'}}>
+                    <Button colorScheme='blue' mr={{sm: 0, md: '1.3em'}} mb={{sm: '.8em', md: 0}} size={{sm: 'xs', md: 'sm'}} fontWeight='400' fontSize={{sm: '1em', md: '1em'}} px={{sm: 3, md: 5}} py={{sm: 3, md: 4}} onClick={viewOnMap}>View on map</Button>
+                    <Spacer/>
+                    <Button colorScheme='blue' size={{sm: 'xs', md: 'sm'}} fontWeight='400' fontSize={{sm: '1em', md: '1em'}} px={{sm: 3, md: 5}} py={{sm: 3, md: 4}} onClick={() => { props.setCity(complementaryData) }}>Choose</Button>
+                </Flex>
 
             </HStack>
         </Box>
