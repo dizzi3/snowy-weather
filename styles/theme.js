@@ -19,7 +19,7 @@ const styles = {
         },
 
         body: {
-            bg: mode('#f4f4f4', '#1a202b')(props),
+            bg: '#1a202b',
         }
     }),
 }

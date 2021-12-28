@@ -5,11 +5,11 @@ import SearchForCity from '../Search/SearchForCity'
 function City(props){
 
     const [complementaryData, setComplementaryData] = useState(null)
-
+    
     useEffect(() => SearchForCity({city: {lat: props.city.latitude, lon: props.city.longitude}, handleData: handleSearchRequest}), []);
 
     function handleSearchRequest(data){
-        setComplementaryData(data)
+        setComplementaryData(data);
     }
 
     function viewOnMap(){
@@ -23,11 +23,11 @@ function City(props){
                 <Container maxW='100%' w='100%'>
                     <Container>{props.city.name}, {props.city.countryCode}{props.city.stateCode !== '' ? ' [' + props.city.stateCode + ']': '' }</Container>
                     <Container>{complementaryData !== null ? 
-                        <Box>{complementaryData.main.temp}&deg;C</Box>
+                        <Box>{complementaryData.current.temp}&deg;C</Box>
                     : <></>}</Container>
 
                     <Container>{complementaryData !== null ? 
-                        <Box>{complementaryData.weather[0].description}</Box>
+                        <Box>{complementaryData.current.weather[0].description}</Box>
                     : <></>}</Container>
 
                     <Container><Link onClick={viewOnMap}>Geo coords [{ props.city.longitude * 1}, { props.city.latitude * 1 }]</Link></Container>

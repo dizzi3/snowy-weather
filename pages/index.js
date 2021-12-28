@@ -1,9 +1,9 @@
 import { Container, Center } from '@chakra-ui/react'
 import CitySearchForm from "../components/CitySearchForm";
 import { useState, useRef, useEffect } from 'react';
-import CityDataDisplay from '../components/CityDataDisplay';
+import WeatherData from '../components/DisplayData/WeatherData';
 import FindMatchingCities from '../components/Search/FindMatchingCities';
-import ChooseCity from '../components/Choose/ChooseCity';
+import ChooseCity from '../components/Choice/ChooseCity';
 import SearchForCity from '../components/Search/SearchForCity';
 import dynamic from 'next/dynamic';
 
@@ -29,8 +29,8 @@ export default function Home() {
 
   const MapRef = useRef(null)
 
-  const [displayCityData, setDisplayCityData] = useState(false)
-  const [cityData, setCityData] = useState({})
+  const [displayWeatherData, setDisplayWeatherData] = useState(false)
+  const [weatherData, setWeatherData] = useState({})
 
   const [displayErrorMessage, setDisplayErrorMessage] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
@@ -43,8 +43,8 @@ export default function Home() {
   function clearStates(){
     setDisplayErrorMessage(false);
     setErrorMessage('');
-    setCityData({})
-    setDisplayCityData(false);
+    setWeatherData({})
+    setDisplayWeatherData(false);
   }
 
   function onCityFormSubmit(data){ 
@@ -66,10 +66,10 @@ export default function Home() {
   }
 
   function setCity(data){
-    setCityData(data);
-    setDisplayCityData(true);
+    setWeatherData(data);
+    setDisplayWeatherData(true);
     setMatchingCities(null);
-    setMapPosition([data.coord.lat, data.coord.lon]);
+    setMapPosition([data.lat, data.lon]);
   }
 
   function onError(message){
@@ -92,7 +92,7 @@ export default function Home() {
 
       <Center textAlign='center' maxW='100%' mt='2em'>
         <ChooseCity cities={matchingCities} setCity={setCity} viewOnMap={viewOnMap}/>
-        <CityDataDisplay display={displayCityData} data={cityData}/>
+        <WeatherData display={displayWeatherData} data={weatherData}/>
       </Center>
       
       <Center maxW='100%' w='100%' mt='3em'>
