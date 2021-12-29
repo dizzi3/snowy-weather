@@ -84,7 +84,7 @@ export default function Home() {
   }
 
   return (
-    <Container maxW='100%' maxH='100%' pb='6em' pt='2em'>
+    <Container maxW='100%' maxH='100%' pb={{sm: '3em', md: '6em'}} pt='2em'>
       <Container maxW='100%' w={{sm: '70%', md: '15%'}}>
         <CitySearchForm onCityFormSubmit={onCityFormSubmit} displayErrorMessage={displayErrorMessage}
                         errorMessage={errorMessage}/>

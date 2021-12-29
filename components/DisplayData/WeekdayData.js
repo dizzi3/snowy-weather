@@ -8,7 +8,8 @@ function WeekdayData(props){
     const data = props.data;
 
     return(
-        <Container fontSize='1.1em' fontFamily='Roboto' color='#fff' bg='#464C58' borderRadius='1em' textAlign='left' p='1em' mx='1em'>
+        <Container fontSize='1.1em' fontFamily='Roboto' color='#fff' bg='#464C58' borderRadius='1em' textAlign='left' 
+                    p='1em' mx={{sm: 0, md: '1em'}} my={{sm : '1em', md: 0}}>
             <HStack>
                 <Container>
                     <Text fontSize='1.7em' fontWeight='500'>{getDayOfWeekFromTimestamp(data.dt)}</Text>
@@ -18,14 +19,14 @@ function WeekdayData(props){
                         <Text fontSize='.83em'>{data.weather[0].description}</Text>
                     </HStack>
 
-                    <VStack pt='.5em' pb='1em' spacing='.8em'>
+                    <VStack pt={{sm: 0, md: '.5em'}} pb='1em' spacing='.8em'>
 
                         <Container bg='#777D8A' borderRadius='1em' fontSize='.82em' py='.5em'>
                             <Center fontSize='1.2em' pb='.2em'>Temperature</Center>
 
                             <HStack>
 
-                                <VStack alignItems='flex-start' w='100%' spacing='.1em' w='100%'>
+                                <VStack alignItems='flex-start' w='100%' spacing='.1em'>
                                     <Text>Morning: <ValueText>{data.temp.morn}</ValueText><UnitText>&deg;C</UnitText></Text>
                                     <Text>Day: <ValueText>{data.temp.day}</ValueText><UnitText>&deg;C</UnitText></Text>
                                     <Text>Evening: <ValueText>{data.temp.eve}</ValueText><UnitText>&deg;C</UnitText></Text>
@@ -59,8 +60,8 @@ function WeekdayData(props){
                     <Text fontSize='.88em'>Cloudiness: <ValueText>{data.clouds}</ValueText><UnitText>%</UnitText></Text>
                     <Text fontSize='.88em'>Humidity: <ValueText>{data.humidity}</ValueText><UnitText>%</UnitText></Text>
                     <Text fontSize='.88em'>Wind speed: <ValueText>{(data.wind_speed * 3.6).toFixed(2)}</ValueText><UnitText>km/h</UnitText></Text>
-                    <Text fontSize='.88em'>Moon phase: <ValueText>{data.moon_phase * 100}</ValueText><UnitText>%</UnitText></Text>
-                    <Text fontSize='.88em'>Probability of precipitation: <ValueText>{data.pop * 100}</ValueText><UnitText>%</UnitText></Text>
+                    <Text fontSize='.88em'>Moon phase: <ValueText>{(data.moon_phase * 100).toFixed(2)}</ValueText><UnitText>%</UnitText></Text>
+                    <Text fontSize='.88em'>Probability of precipitation: <ValueText>{(data.pop * 100).toFixed(1)}</ValueText><UnitText>%</UnitText></Text>
                 </Container>
 
                 

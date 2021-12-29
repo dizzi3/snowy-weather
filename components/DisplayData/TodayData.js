@@ -7,7 +7,8 @@ function TodayData(props){
     const data = props.data
 
     return(
-        <Container maxW='33%' fontSize='1.1em' fontFamily='Roboto' color='#fff' bg='#464C58' borderRadius='1em' textAlign='left' p='1em'>
+        <Container maxW='100%' w={{sm: 'fit-content', md: '33%'}} fontSize='1.1em' fontFamily='Roboto' color='#fff' bg='#464C58' 
+                    borderRadius='1em' textAlign='left' p={{sm: '.8em', md: '1em'}}>
             <HStack>
                 <Container>
                     <Text fontSize='1.7em' fontWeight='500'>Today</Text>
@@ -27,7 +28,7 @@ function TodayData(props){
                     <Text>Probability of precipitation: <ValueText>{data.daily[0].pop * 100}</ValueText><UnitText>%</UnitText></Text>
                 </Container>
 
-                <VStack w='85%' pt='1em'>
+                <VStack w='85%' pt={{sm: '0em', md: '1em'}}>
 
                     <Container bg='#777D8A' borderRadius='1em' maxW='100%' w='100%' fontSize='.82em' py='.5em'>
                         <Center fontSize='1.2em' pb='.2em'>Temperature</Center>
